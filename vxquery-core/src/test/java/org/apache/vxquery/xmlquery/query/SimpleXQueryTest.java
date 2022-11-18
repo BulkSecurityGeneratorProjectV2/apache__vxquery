@@ -20,6 +20,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
@@ -100,7 +101,7 @@ public class SimpleXQueryTest {
         try {
             GZIPInputStream in = new GZIPInputStream(
                     new BufferedInputStream(new FileInputStream(new File(dir + filename + ".gz"))));
-            File temp = File.createTempFile("vxquery", filename);
+            File temp = Files.createTempFile("vxquery", filename).toFile();
             temp.deleteOnExit();
             FileOutputStream out = new FileOutputStream(temp);
             byte[] buf = new byte[1024];

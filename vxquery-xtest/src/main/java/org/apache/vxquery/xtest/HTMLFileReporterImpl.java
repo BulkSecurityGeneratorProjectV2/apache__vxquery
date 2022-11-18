@@ -22,6 +22,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URI;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -274,7 +275,7 @@ class ResultManager {
                 } else {
                     ensureDir(dir);
                 }
-                curFile = File.createTempFile("res", ".html", dir);
+                curFile = Files.createTempFile(dir.toPath(), "res", ".html").toFile();
                 curFileWriter = new FileWriter(curFile);
                 curPrintWriter = new PrintWriter(new BufferedWriter(curFileWriter));
                 curURI = curFile.toURI();
